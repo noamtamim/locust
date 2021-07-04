@@ -1,6 +1,6 @@
 FROM python:3.9.5-slim
 
-RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip" && \
+RUN python -c "import urllib.request as req; req.urlretrieve('https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip', 'awscliv2.zip')" && \
   unzip awscliv2.zip && ./aws/install
 
 RUN pip install -U pip wheel && pip install locust boto3 pyyaml
