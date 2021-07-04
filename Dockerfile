@@ -13,7 +13,7 @@ RUN echo >> /etc/security/limits.conf && \
 WORKDIR /locust
 COPY entrypoint.py .
 RUN chmod +x entrypoint.py
-ENTRYPOINT ["./entrypoint.py"]
+ENTRYPOINT ["./entrypoint.sh"]
 
 # turn off python output buffering
 ENV PYTHONUNBUFFERED=1
