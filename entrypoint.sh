@@ -13,9 +13,10 @@ set -exu
 
 function download() {
     if [[ $1 == s3:* ]]; then
-      aws s3 cp "$1" "$2"
+        aws s3 cp "$1" "$2"
     else
-      curl "$1" -o "$2"
+        # avoid installing curl
+        python -c "import urllib.request as req; req.urlretrieve('$1', '$2')"
     fi
 }
 
