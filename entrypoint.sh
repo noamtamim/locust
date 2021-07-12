@@ -11,6 +11,7 @@ DO NOT pass a '-f' argument!
 
 set -exu
 
+echo "$@"
 
 echo My IP: $(curl https://api.ipify.org/)
 
@@ -18,5 +19,5 @@ curl "$1" -o locustfile.py
 
 shift
 
-locust $*
+locust "$@"
 
