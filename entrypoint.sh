@@ -18,5 +18,7 @@ function download() {
 
 download "$1" locustfile.py
 
+shift
+
 locust $*
 
