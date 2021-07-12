@@ -4,7 +4,7 @@
 
 Usage:
 
-Pass the URL (http/https/s3) of the locustfile.py file as the first argument. All other arguments go directly to locust.
+Pass the URL of the locustfile.py file as the first argument. All other arguments go directly to locust.
 DO NOT pass a `-f` argument!
 
 ////
@@ -12,12 +12,8 @@ DO NOT pass a `-f` argument!
 set -exu
 
 function download() {
-    if [[ $1 == s3:* ]]; then
-        aws s3 cp "$1" "$2"
-    else
-        # avoid installing curl
-        python -c "import urllib.request as req; req.urlretrieve('$1', '$2')"
-    fi
+    # avoid installing curl
+    python -c "import urllib.request as req; req.urlretrieve('$1', '$2')"
 }
 
 download "$1" locustfile.py
