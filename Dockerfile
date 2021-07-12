@@ -7,9 +7,9 @@ RUN echo >> /etc/security/limits.conf && \
     echo "locust  hard  nofile 50000" >> /etc/security/limits.conf && \
     echo "fs.file-max=500000" > /etc/sysctl.d/local.conf
 
-WORKDIR /locust
+WORKDIR /
 COPY entrypoint.py .
-RUN chmod +x entrypoint.py
+RUN chmod +x ./entrypoint.py
 ENTRYPOINT ["./entrypoint.sh"]
 
 # turn off python output buffering
