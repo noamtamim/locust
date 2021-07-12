@@ -11,6 +11,5 @@ RUN echo >> /etc/security/limits.conf && \
 ENV PYTHONUNBUFFERED=1
 
 WORKDIR /locust
-COPY entrypoint.sh .
-RUN chmod +x ./entrypoint.sh
-ENTRYPOINT ["./entrypoint.sh"]
+COPY *.sh .
+RUN chmod +x ./*.sh
