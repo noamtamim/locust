@@ -10,8 +10,6 @@ MASTER_PORT="$3"
 
 curl "$URL" -o locustfile.py
 
-ping -c4 $MASTER_HOST
-
 # just for connectivity testing
 curl http://$MASTER_HOST:8089
 
