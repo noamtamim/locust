@@ -2,14 +2,9 @@
 
 import boto3
 import sys
-from urllib.request import urlretrieve
-from os import system
 
 
-locustfile_url, master_cluster, master_service, master_port = sys.argv[1:]
-
-
-def find_master_ip():
+def find_master_ip(master_cluster, master_service):
 
     client = boto3.client('ecs')
 
@@ -22,11 +17,6 @@ def find_master_ip():
     return task_desc['tasks'][0]['containers'][0]['networkInterfaces'][0]['privateIpv4Address']
 
 
-urlretrieve(locustfile_url, 'locustfile.py')
 
-master_ip = find_master_ip()
-
-cmd = f'locust --worker --master-host={master_ip} --master-port={master_port}'
-print('Starting locust:', cmd)
-
-system(cmd)
+if __name__ == '__main__':
+    print(find_master_ip(sys.argv[1], sys.argv[2]))
