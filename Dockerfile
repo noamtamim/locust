@@ -1,6 +1,6 @@
 FROM python:3.9.5
 
-RUN pip install -U pip wheel && pip install locust
+RUN pip install -U pip wheel && pip install locust boto3
 
 RUN echo >> /etc/security/limits.conf && \
     echo "locust  soft  nofile 50000" >> /etc/security/limits.conf && \
