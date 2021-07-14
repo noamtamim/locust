@@ -11,5 +11,5 @@ RUN echo >> /etc/security/limits.conf && \
 ENV PYTHONUNBUFFERED=1
 
 WORKDIR /locust
-COPY *.sh .
+COPY *.sh *.py .
 RUN chmod +x ./*.sh
