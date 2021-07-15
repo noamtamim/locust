@@ -9,7 +9,9 @@ MASTER_CLUSTER="$2"
 MASTER_SERVICE="$3"
 MASTER_PORT="$4"
 
-export AWS_DEFAULT_REGION=$(curl http://169.254.169.254/latest/meta-data/placement/region)
+if [ -z "$ECS_CONTAINER_METADATA_URI_V4" ]; then
+  export AWS_DEFAULT_REGION=$(curl http://169.254.169.254/latest/meta-data/placement/region)
+fi
 
 curl "$URL" -o locustfile.py
 
